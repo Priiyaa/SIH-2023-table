@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f500;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #container {
+            display: flex;
+            flex: 1;
+        }
+
+        #sidebar {
+            width: 250px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .navbar-options {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar-option {
+            margin-bottom: 10px;
+        }
+
+        .chat-container {
+            border: 1px solid #cccccc38;
+            padding: 20px;
+         
+            background-color: #ffffff5b;
+            flex: 1;
+            border-radius: 8px;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .user-message, .bot-message {
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            font-weight: bold;
+            color: black;
+        }
+
+        .bot-message {
+            font-weight: lighter;
+            color: rgb(9, 1, 1);
+        }
+
+        .message-header {
+            font-weight: bolder;
+            margin-bottom: 5px;
+            color: black;
+        }
+
+        .input-container {
+            display: flex;
+            margin-top: 20px;
+            align-items: flex-end;
+            border: 1px lightgray;
+        }
+
+
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px black;
+            background-color: lightgray;
+            border-radius: 5px;
+        }
+
+        #send-button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
+    <title>Chatbot with UI</title>
+</head>
+<body>
+
+<div id="container">
+    <div id="sidebar">
+        <div class="navbar-title">Chatbot</div>
+        <ul class="navbar-options">
+            <li class="navbar-option"><a href="#" style="color: white;">Visualization</a></li>
+            <li class="navbar-option"><a href="#" style="color: white;">Home</a></li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <div class="chat-container" id="chat-container">
+            <!-- Chatbot content goes here -->
+            <div class="bot-message">
+                <div class="message-header">Chatbot</div>
+                Hello! How can I help you today?
+            </div>
+        </div>
+
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Type your message..." >
+            <button id="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function sendMessage() {
+        const userMessage = document.getElementById('user-input').value;
+        const chatContainer = document.getElementById('chat-container');
+
+        // Display user message
+        const userMessageElement = document.createElement('div');
+        userMessageElement.className = 'user-message';
+        userMessageElement.innerHTML = `
+            <div class="message-header">User</div>
+            ${userMessage}
+        `;
+        chatContainer.appendChild(userMessageElement);
+
+        // Simulate bot response (you can replace this with actual API call)
+        const botMessageElement = document.createElement('div');
+        botMessageElement.className = 'bot-message';
+        botMessageElement.innerHTML = `
+            <div class="message-header">Chatbot</div>
+            Sure, I can help you with that!
+        `;
+        chatContainer.appendChild(botMessageElement);
+
+        // Clear input field
+        document.getElementById('user-input').value = '';
+
+        // Scroll to the bottom of the chat container
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+</script>
+
+</body>
+</html>

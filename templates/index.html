@@ -1,0 +1,66 @@
+
+{% include 'header.html' %}
+        <!-- Masthead-->
+        <section class="masthead">
+            <div class="py-5 container align-items-center">
+                <div class="justify-content-center">
+                    <div class="text-center container">
+                            <div class="container px-4 px-lg-5">
+                                <div class="row gx-4 gx-lg-5 justify-content-center">
+                                    <div class="col-lg-8 py-5">
+                                        <form class="was-validated" method="post">
+                                          <div class="mb-3">
+                                              <h3 class="text-white">Write your question here</h3>
+                                            <label for="validationTextarea"></label>
+                                            <textarea class="form-control " id="validationTextarea" name="user_input" placeholder="Write here your questions" required></textarea>
+                                          </div>
+                                            <button class="btn btn-primary" id="send-button" onclick=sendMessage() type="submit"><i class="fa-solid fa-square-arrow-up-right fa-2xl"></i></button>
+                                        </form>
+                                    </div>
+                                    <div class="container content text-justify col-lg-8 py-2">
+                                      
+
+                <table class="table">
+                    <tr class="table__header">
+                        {% for header in headings %}
+                        <th class="table__cell"> {{ header }}</th>
+                        {% endfor %}
+                       
+                    </tr>
+                {% for row in data %}
+                <tr class="table__row"> 
+                {% for cell in row %}
+                <td class="table__cell"> {{ cell }} </td>
+                {% endfor %}
+                </tr>
+                
+                {% endfor %}
+                    
+                
+                   </table>
+
+
+                                         <!-- {% for para in ai_answer %}
+                                            <h6 class="color-white"> {{ para }}</h6>
+                                            
+                                         {% endfor %} -->
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+
+            </div>
+            {% include 'footer.html' %}
+        </section>
+
+     <script>
+        /* Please ❤ this if you like it! 😊 */
+        function sendMessage() {
+        const userMessage = document.getElementById('validationTextarea').value;
+        const chatContainer = document.getElementById('chat-container');
+        }
+     </script>
+        <!-- About-->
+
